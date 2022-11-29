@@ -1,5 +1,5 @@
 <template>
-  <div class="page not-found">
+  <div class="not-found">
     <!-- <img src="https://iconfont.alicdn.com/s/5379895a-240f-4122-9ac6-a60eed389665_origin.svg" /> -->
     <div class="title">
       <h2>页面正在搭建中</h2>
