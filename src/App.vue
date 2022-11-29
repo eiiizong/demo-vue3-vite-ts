@@ -13,4 +13,11 @@ import { ref } from 'vue'
 const locale = ref(zhCn)
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+body {
+  height: 100%;
+}
+#app {
+  height: 100%;
+}
+</style>
