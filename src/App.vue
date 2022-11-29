@@ -16,6 +16,7 @@ const locale = ref(zhCn)
 <style lang="scss">
 // 全局公用样式
 @import '@/assets/styles/scss/index.scss';
+// @import '@/assets/styles/scss/element/index.scss';
 // 字体文件引入
 @import '@/assets/iconfont/index.scss';
 </style>

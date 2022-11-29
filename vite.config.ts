@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-
+// import ElementPlus from 'unplugin-element-plus/vite'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -25,9 +25,10 @@ export default defineConfig({
     preprocessorOptions: {
       // 全局样式引入
       scss: {
-        additionalData: '@import "./src/assets/styles/scss/variables/index";',
+        additionalData: '@import "@/assets/styles/scss/variables/index";',
         javascriptEnabled: true
       }
-    }
+    },
+    devSourcemap: true
   }
 })

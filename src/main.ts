@@ -8,7 +8,7 @@ import pinia from '@/stores'
 
 // 引入样式
 import 'normalize.css/normalize.css'
-
+// import 'element-plus/theme-chalk/dark/css-vars.css'
 const app = createApp(App)
 
 app.use(pinia)
