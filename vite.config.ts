@@ -20,5 +20,14 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  css: {
+    preprocessorOptions: {
+      // 全局样式引入
+      scss: {
+        additionalData: '@import "./src/assets/styles/scss/variables/index";',
+        javascriptEnabled: true
+      }
+    }
   }
 })

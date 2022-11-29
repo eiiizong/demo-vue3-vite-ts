@@ -1,5 +1,5 @@
 /**
- * 500 路由
+ * /500 路由
  */
 const routeServerInternalError = {
   path: '/500',
