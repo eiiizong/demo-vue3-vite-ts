@@ -3,10 +3,10 @@
     <div class="demo-tip">直接使用，无须引入</div>
     <div class="demo-content">
       用户名：{{ userInfo.userName }}
-      <el-button type="primary" @click="storeUserInfo.updateStoreUserInfo({ userName: '测试' })"
-        >set userInfo</el-button
-      >
-      <el-button type="primary" @click="storeUserInfo.$reset()">clear userInfo</el-button>
+      <el-button type="primary" @click="storeUserInfo.updateStoreUserInfo({ userName: '测试' })">
+        set userInfo
+      </el-button>
+      <el-button type="primary" @click="storeUserInfo.$reset()"> clear userInfo </el-button>
     </div>
   </div>
 </template>
