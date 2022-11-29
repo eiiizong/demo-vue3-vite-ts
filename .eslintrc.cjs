@@ -16,7 +16,12 @@ module.exports = {
   },
   plugins: ['prettier'],
   rules: {
-    'prettier/prettier': 'error'
-    // 'vue/multi-word-component-names': 'off'
+    'prettier/prettier': 'error',
+    'vue/multi-word-component-names': [
+      'error',
+      {
+        ignores: ['index']
+      }
+    ]
   }
 }

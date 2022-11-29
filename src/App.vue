@@ -14,10 +14,8 @@ const locale = ref(zhCn)
 </script>
 
 <style lang="scss">
-body {
-  height: 100%;
-}
-#app {
-  height: 100%;
-}
+// 全局公用样式
+@import '@/assets/styles/scss/index.scss';
+// 字体文件引入
+@import '@/assets/iconfont/index.scss';
 </style>

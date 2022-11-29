@@ -3,7 +3,7 @@
  */
 const routeNotFound = {
   path: '/:catchAll(.*)',
-  component: () => import('@/views/not-found/not-found.vue'),
+  component: () => import('@/views/not-found/index.vue'),
   meta: {
     title: '404',
     requireAuth: false
