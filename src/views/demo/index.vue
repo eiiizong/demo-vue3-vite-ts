@@ -21,6 +21,11 @@ const data = ref([
     id: '01',
     path: 'use-element-plus',
     name: '使用 Element Plus 组件'
+  },
+  {
+    id: '02',
+    path: 'use-pinia',
+    name: '使用 pinia'
   }
 ])
 </script>

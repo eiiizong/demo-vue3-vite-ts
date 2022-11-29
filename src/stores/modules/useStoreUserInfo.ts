@@ -14,16 +14,24 @@ import { defineStore } from 'pinia'
 /**
  * store 用户信息
  */
-const useStoreUserInfo = defineStore('storeUserInfo', () => {
-  const userInfo: Ref<StoreUserInfo> = ref({})
+const useStoreUserInfo = defineStore(
+  'storeUserInfo',
+  () => {
+    const userInfo: Ref<StoreUserInfo> = ref({})
 
-  const getStoreUserInfo = computed(() => userInfo.value)
+    const getStoreUserInfo = computed(() => userInfo.value)
 
-  function updateStoreUserInfo(data: StoreUserInfo) {
-    userInfo.value = data
+    function updateStoreUserInfo(data: StoreUserInfo) {
+      userInfo.value = data
+    }
+
+    return { userInfo, getStoreUserInfo, updateStoreUserInfo }
+  },
+  {
+    persist: {
+      storage: sessionStorage
+    }
   }
-
-  return { userInfo, getStoreUserInfo, updateStoreUserInfo }
-})
+)
 
 export { useStoreUserInfo }

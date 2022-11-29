@@ -16,6 +16,14 @@ const routeDemo = {
         title: '示例 use-element-plus',
         requireAuth: false
       }
+    },
+    {
+      path: 'use-pinia',
+      component: () => import('@/views/demo/children/use-pinia.vue'),
+      meta: {
+        title: '示例 use-pinia',
+        requireAuth: false
+      }
     }
   ]
 }
