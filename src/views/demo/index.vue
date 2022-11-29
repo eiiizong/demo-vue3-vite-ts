@@ -1,12 +1,54 @@
 <template>
-  <div class="demo">demo</div>
+  <div class="demo">
+    <div class="left">
+      <RouterView></RouterView>
+    </div>
+    <div class="right">
+      <ul>
+        <li v-for="item in data" :key="item.id">
+          <a :href="'/demo/' + item.path">{{ item.name }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const data = ref([
+  {
+    id: '01',
+    path: 'use-element-plus',
+    name: '使用 Element Plus 组件'
+  }
+])
+</script>
 
 <style lang="scss" scoped>
 .demo {
   width: 100%;
-  background-color: $primary;
+  display: flex;
+  padding: 20px;
+
+  .right {
+    ul {
+      li {
+        margin-bottom: 10px;
+        a {
+          color: $primary;
+          transition: all 0.3s;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  .left {
+    flex: 1;
+    overflow: hidden;
+    padding: 20px;
+  }
 }
 </style>

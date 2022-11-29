@@ -9,3 +9,6 @@ body {
     background-color: $page-background-color;
   }
 }
+[v-cloak] {
+  display: none;
+}
