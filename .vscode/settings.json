@@ -1,0 +1,4 @@
+{
+  "liveServer.settings.port": 5501,
+  "editor.formatOnSave": true // 文件保存时是否自动格式化
+}
