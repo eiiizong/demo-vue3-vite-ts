@@ -4,6 +4,10 @@ import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import config from './src/config'
+
+const { requestUrl } = config
+
 // import ElementPlus from 'unplugin-element-plus/vite'
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -32,6 +36,14 @@ export default defineConfig({
     devSourcemap: true
   },
   server: {
-    port: 3333
+    port: 3333,
+    cors: true,
+    proxy: {
+      '/api': {
+        target: requestUrl,
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
   }
 })

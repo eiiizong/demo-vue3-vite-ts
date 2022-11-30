@@ -13,17 +13,16 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, watchEffect } from 'vue'
-import config from '@/config'
+import { reactive, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import config from '@/config'
 
-const { locale, messages }: any = useI18n()
-
-console.log(locale, messages, 98765)
+const { locale, messages } = useI18n()
+const { systemLanguage } = config
 
 const configProviderData = reactive({
   // 翻译文本对象
-  locale: messages[config.systemLanguage],
+  locale: messages.value[systemLanguage],
   // 全局组件大小  large / default /small
   size: 'default',
   // 全局初始化 zIndex 的值
@@ -44,13 +43,10 @@ const configProviderData = reactive({
   experimentalFeatures: {}
 })
 
-// 修改element 和 i18n 默认语言
-const changeLanguage = () => {
-  locale.value = config.systemLanguage
-  configProviderData.locale = messages.value[locale.value]
-}
-// 监听修改语言
-watchEffect(changeLanguage)
+// 监听语言改变
+watch(locale, (val) => {
+  configProviderData.locale = messages.value[val]
+})
 </script>
 
 <style lang="scss">

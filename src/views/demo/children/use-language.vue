@@ -3,7 +3,10 @@
     <div class="demo-tip">language</div>
 
     <div class="demo-content">
-      <div>文本内容： {{ t(text) }}</div>
+      <el-row class="mb-4">
+        <el-date-picker v-model="value1" type="date" placeholder="Pick a day" />
+      </el-row>
+      <div>文本内容： {{ useI18nT(text) }}</div>
       <el-button type="primary" @click="handleChangeLanguage('zh-cn')">中文</el-button>
       <el-button type="success" @click="handleChangeLanguage('en')">英文</el-button>
     </div>
@@ -14,8 +17,9 @@
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-const { t, locale } = useI18n()
+const { t: useI18nT, locale } = useI18n()
 
+const value1 = ref('')
 const text = ref('testMessage.userName')
 
 const handleChangeLanguage = (type: string) => {
