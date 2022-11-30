@@ -15,7 +15,7 @@ import { defineStore } from 'pinia'
 const useStoreLanguage = defineStore(
   'storeLanguage',
   () => {
-    const language = ref('')
+    const language = ref('zhCn')
 
     const getStoreLanguage = computed(() => language.value)
 

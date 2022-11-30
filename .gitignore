@@ -26,3 +26,7 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+
+## Element自动导入配置文件忽略
+auto-imports.d.ts
+components.d.ts

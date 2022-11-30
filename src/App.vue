@@ -13,14 +13,17 @@
 </template>
 
 <script setup lang="ts">
-// element组件使用中文语言
-import zhCn from 'element-plus/dist/locale/zh-cn'
-import { RouterView } from 'vue-router'
-import { reactive } from 'vue'
+import { reactive, watchEffect } from 'vue'
+import config from '@/config'
+import { useI18n } from 'vue-i18n'
+
+const { locale, messages }: any = useI18n()
+
+console.log(locale, messages, 98765)
 
 const configProviderData = reactive({
   // 翻译文本对象
-  locale: zhCn,
+  locale: messages[config.systemLanguage],
   // 全局组件大小  large / default /small
   size: 'default',
   // 全局初始化 zIndex 的值
@@ -40,6 +43,14 @@ const configProviderData = reactive({
   // 添加的实验阶段的功能，所有功能都是默认设置为 false
   experimentalFeatures: {}
 })
+
+// 修改element 和 i18n 默认语言
+const changeLanguage = () => {
+  locale.value = config.systemLanguage
+  configProviderData.locale = messages.value[locale.value]
+}
+// 监听修改语言
+watchEffect(changeLanguage)
 </script>
 
 <style lang="scss">

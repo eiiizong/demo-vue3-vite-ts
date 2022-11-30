@@ -3,10 +3,9 @@
     <div class="demo-tip">language</div>
 
     <div class="demo-content">
-      <div>文本内容： {{ text }}</div>
-      {{ $t('testMessage.userName') }}
-      <el-button type="primary">中文</el-button>
-      <el-button type="success">英文</el-button>
+      <div>文本内容： {{ t(text) }}</div>
+      <el-button type="primary" @click="handleChangeLanguage('zh-cn')">中文</el-button>
+      <el-button type="success" @click="handleChangeLanguage('en')">英文</el-button>
     </div>
   </div>
 </template>
@@ -15,10 +14,13 @@
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-const { t } = useI18n()
-console.log(t('testMessage.userName'), 987)
+const { t, locale } = useI18n()
 
-const text = ref('')
+const text = ref('testMessage.userName')
+
+const handleChangeLanguage = (type: string) => {
+  locale.value = type
+}
 </script>
 
 <style lang="scss" scoped>

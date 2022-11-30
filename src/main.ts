@@ -10,6 +10,7 @@ import i18n from '@/languages'
 
 // 引入样式
 import 'normalize.css/normalize.css'
+
 const app = createApp(App)
 
 app.use(pinia)

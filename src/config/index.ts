@@ -1,6 +1,11 @@
-export const config = {
+import { reactive } from 'vue'
+const config = reactive({
   // 请求地址
   requestUrl: '',
   // 是否开启加密
-  isOpenEncryption: true
-}
+  isOpenEncryption: true,
+  // 系统语音
+  systemLanguage: 'zh-cn'
+})
+
+export default config
