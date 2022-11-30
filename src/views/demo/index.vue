@@ -19,21 +19,26 @@ import { ref } from 'vue'
 const data = ref([
   {
     id: '01',
+    path: 'use-axios',
+    name: '使用 axios'
+  },
+  {
+    id: '02',
     path: 'use-element-plus',
     name: '使用 Element Plus 组件'
   },
   {
-    id: '02',
+    id: '03',
     path: 'use-language',
     name: '使用 language'
   },
   {
-    id: '03',
+    id: '04',
     path: 'use-pinia',
     name: '使用 pinia'
   },
   {
-    id: '04',
+    id: '05',
     path: 'use-theme',
     name: '使用 theme'
   }

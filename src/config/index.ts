@@ -1,6 +1,6 @@
 const config = {
   // 请求地址
-  requestUrl: '',
+  requestUrl: 'https://lssrsj.cn:8443',
   // 是否开启加密
   isOpenEncryption: true,
   // 系统语音

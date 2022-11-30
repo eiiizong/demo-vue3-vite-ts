@@ -10,6 +10,14 @@ const routeDemo = {
   },
   children: [
     {
+      path: 'use-axios',
+      component: () => import('@/views/demo/children/use-axios.vue'),
+      meta: {
+        title: '示例 use-axios',
+        requireAuth: false
+      }
+    },
+    {
       path: 'use-element-plus',
       component: () => import('@/views/demo/children/use-element-plus.vue'),
       meta: {

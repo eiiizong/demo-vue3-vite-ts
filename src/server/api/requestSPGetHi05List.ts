@@ -1,4 +1,5 @@
 import { request } from '@/server/request'
+import type { RequestSPGetHi05List } from '@/server/types'
 
 /**
  * api 获取审批系统政策文件列表
@@ -12,12 +13,12 @@ import { request } from '@/server/request'
  * @returns
  */
 
-const requestSPGetHi05List = (
-  chi051:string = '',
-  chi037:string = '',
-  chi031:string = '',
-  pageNo:number = 1,
-  pageSize:number = 10,
+const requestSPGetHi05List: RequestSPGetHi05List.RequestOptions = (
+  chi051: string = '',
+  chi037: string = '',
+  chi031: string = '',
+  pageNo: number = 1,
+  pageSize: number = 10,
   isShowLoading = true,
   isShowErrorToast = true
 ) => {
@@ -29,7 +30,7 @@ const requestSPGetHi05List = (
     aab301: '',
     chi051,
     chi037,
-    chi031,
+    chi031
   }
 
   return new Promise((resolve, reject) => {
