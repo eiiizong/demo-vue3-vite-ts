@@ -1,5 +1,5 @@
-import { request } from '@/server/request'
-import type { RequestSPGetHi05List } from '@/server/types'
+import { Request } from '@/server/request'
+// import type { RequestSPGetHi05List } from '@/server/types'
 
 /**
  * api 获取审批系统政策文件列表
@@ -13,12 +13,12 @@ import type { RequestSPGetHi05List } from '@/server/types'
  * @returns
  */
 
-const requestSPGetHi05List: RequestSPGetHi05List.RequestOptions = (
-  chi051: string = '',
-  chi037: string = '',
-  chi031: string = '',
-  pageNo: number = 1,
-  pageSize: number = 10,
+const requestSPGetHi05List = (
+  chi051 = '',
+  chi037 = '',
+  chi031 = '',
+  pageNo = 1,
+  pageSize = 10,
   isShowLoading = true,
   isShowErrorToast = true
 ) => {
@@ -34,7 +34,7 @@ const requestSPGetHi05List: RequestSPGetHi05List.RequestOptions = (
   }
 
   return new Promise((resolve, reject) => {
-    request(
+    Request.post(
       '/frontRestService/frontBcpDataRestService/getWebServiceDataTwo',
       data,
       isShowLoading,

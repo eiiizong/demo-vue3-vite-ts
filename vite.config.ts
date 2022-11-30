@@ -4,10 +4,6 @@ import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-// @ts-ignore：
-import config from './src/config'
-
-const { requestUrl } = config
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -40,7 +36,7 @@ export default defineConfig({
     cors: true,
     proxy: {
       '/api': {
-        target: requestUrl,
+        target: process.env.VUE_APP_API_URL,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }
