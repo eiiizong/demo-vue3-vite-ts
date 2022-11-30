@@ -18,10 +18,26 @@ const routeDemo = {
       }
     },
     {
+      path: 'use-language',
+      component: () => import('@/views/demo/children/use-language.vue'),
+      meta: {
+        title: '示例 use-language',
+        requireAuth: false
+      }
+    },
+    {
       path: 'use-pinia',
       component: () => import('@/views/demo/children/use-pinia.vue'),
       meta: {
         title: '示例 use-pinia',
+        requireAuth: false
+      }
+    },
+    {
+      path: 'use-theme',
+      component: () => import('@/views/demo/children/use-theme.vue'),
+      meta: {
+        title: '示例 use-theme',
         requireAuth: false
       }
     }

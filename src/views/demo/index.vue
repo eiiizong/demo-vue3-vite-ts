@@ -24,8 +24,18 @@ const data = ref([
   },
   {
     id: '02',
+    path: 'use-language',
+    name: '使用 language'
+  },
+  {
+    id: '03',
     path: 'use-pinia',
     name: '使用 pinia'
+  },
+  {
+    id: '04',
+    path: 'use-theme',
+    name: '使用 theme'
   }
 ])
 </script>

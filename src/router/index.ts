@@ -16,7 +16,7 @@ router.beforeEach((to, from, next) => {
   const { title, requireAuth } = meta
 
   if (title) {
-    // document.title = title
+    document.title = title as string
   }
 
   // 判断该路由是否需要登录权限 requireAuth 可以在路由元信息指定哪些页面需要登录权限
