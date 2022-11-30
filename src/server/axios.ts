@@ -4,6 +4,9 @@ import type { AxiosRequestConfig, Method } from 'axios'
 import { ElMessage } from 'element-plus'
 import axiosErrorHandle from './axiosErrorHandle'
 
+// @ts-ignore：process未找到错误 => 需要该文件在vscode工作区的根目录下，才不会有错误提示。
+const { VITE_API_URL } = process.env
+
 // 定义接口
 interface PendingType {
   url?: string
@@ -43,7 +46,7 @@ const axiosRemovePending = (config: AxiosRequestConfig) => {
 const axiosInstance = axios.create({
   // 请求的base地址
   // @ts-ignore：process未找到错误 => 需要该文件在vscode工作区的根目录下，才不会有错误提示。
-  baseURL: process.env.VUE_APP_API_URL,
+  baseURL: VITE_API_URL,
   headers: {},
   // 请求超时时长
   timeout: 1000 * 60,

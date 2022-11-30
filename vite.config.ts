@@ -5,17 +5,12 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
-console.log('process.env.VUE_APP_API_URL====', loadEnv('development', './'))
-console.log('process.env.VUE_APP_API_URL====', loadEnv('production', './'))
-
 // https://vitejs.dev/config/
-export default defineConfig(({ command, mode }) => {
-  const env = loadEnv(mode, process.cwd(), '')
-  console.log(env, 987654)
-
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd())
   return {
     define: {
-      __APP_ENV__: env.APP_ENV
+      'process.env': env
     },
     plugins: [
       vue(),
@@ -46,7 +41,7 @@ export default defineConfig(({ command, mode }) => {
       cors: true,
       proxy: {
         '/api': {
-          target: process.env.VUE_APP_API_URL,
+          target: env.VITE_API_URL,
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, '')
         }
