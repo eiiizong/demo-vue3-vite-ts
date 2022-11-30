@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 // element组件使用中文语言
-import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
+import zhCn from 'element-plus/dist/locale/zh-cn'
 import { RouterView } from 'vue-router'
 import { reactive } from 'vue'
 

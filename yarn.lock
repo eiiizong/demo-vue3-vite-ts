@@ -68,6 +68,44 @@
   "resolved" "https://registry.npmmirror.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz"
   "version" "1.2.1"
 
+"@intlify/core-base@9.3.0-beta.10":
+  "integrity" "sha512-WJhjzR6fxoSSdOnQHEAqEAQiXsF38YXbw5asveAirjE2H+75CLZyNwEXaJzNBylrDgTrfWjoAyBuBde7TaooRA=="
+  "resolved" "https://registry.npmmirror.com/@intlify/core-base/-/core-base-9.3.0-beta.10.tgz"
+  "version" "9.3.0-beta.10"
+  dependencies:
+    "@intlify/devtools-if" "9.3.0-beta.10"
+    "@intlify/message-compiler" "9.3.0-beta.10"
+    "@intlify/shared" "9.3.0-beta.10"
+    "@intlify/vue-devtools" "9.3.0-beta.10"
+
+"@intlify/devtools-if@9.3.0-beta.10":
+  "integrity" "sha512-9kRiLK57MDogzjPElQhvd+K/s61MZE0TCHJAD+5zw+e3Vxie+xBCSa27mJB3jBuHC/QyMqIdrfyM6rmPtm22Rg=="
+  "resolved" "https://registry.npmmirror.com/@intlify/devtools-if/-/devtools-if-9.3.0-beta.10.tgz"
+  "version" "9.3.0-beta.10"
+  dependencies:
+    "@intlify/shared" "9.3.0-beta.10"
+
+"@intlify/message-compiler@9.3.0-beta.10":
+  "integrity" "sha512-RoOC6yceOykLRhN0NlbkNOBUx1el6iphx3W8NfOx3jHVNtfT1FYokx14/5sU3F1F0uxeG4sp6q+ppKvaF8o+ww=="
+  "resolved" "https://registry.npmmirror.com/@intlify/message-compiler/-/message-compiler-9.3.0-beta.10.tgz"
+  "version" "9.3.0-beta.10"
+  dependencies:
+    "@intlify/shared" "9.3.0-beta.10"
+    "source-map" "0.6.1"
+
+"@intlify/shared@9.3.0-beta.10":
+  "integrity" "sha512-h93uAanbAt/XgjDHclrVB7xix6r7Uz11wx0iGNOCdHP7aA2LCJjUT3uNbekJjjbo+Fl5jzTSJZdm2SexzoqhRA=="
+  "resolved" "https://registry.npmmirror.com/@intlify/shared/-/shared-9.3.0-beta.10.tgz"
+  "version" "9.3.0-beta.10"
+
+"@intlify/vue-devtools@9.3.0-beta.10":
+  "integrity" "sha512-SSA2zk+Mn+idJHaIaKeGmuvY3EwxDUUvniecZ7S66KkrUomMDyEq/+WJYlF3+aslLL7vxnRVN2y+sXB+0NI2WQ=="
+  "resolved" "https://registry.npmmirror.com/@intlify/vue-devtools/-/vue-devtools-9.3.0-beta.10.tgz"
+  "version" "9.3.0-beta.10"
+  dependencies:
+    "@intlify/core-base" "9.3.0-beta.10"
+    "@intlify/shared" "9.3.0-beta.10"
+
 "@nodelib/fs.scandir@2.1.5":
   "integrity" "sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g=="
   "resolved" "https://registry.npmmirror.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz"
@@ -320,7 +358,7 @@
     "@vue/compiler-dom" "3.2.45"
     "@vue/shared" "3.2.45"
 
-"@vue/devtools-api@^6.4.5":
+"@vue/devtools-api@^6.2.1", "@vue/devtools-api@^6.4.5":
   "integrity" "sha512-JD5fcdIuFxU4fQyXUu3w2KpAJHzTVdN+p4iOX2lMWSHMOoQdMAcpFLZzm9Z/2nmsoZ1a96QEhZ26e50xLBsgOQ=="
   "resolved" "https://registry.npmmirror.com/@vue/devtools-api/-/devtools-api-6.4.5.tgz"
   "version" "6.4.5"
@@ -1985,7 +2023,7 @@
   "resolved" "https://registry.npmmirror.com/source-map-js/-/source-map-js-1.0.2.tgz"
   "version" "1.0.2"
 
-"source-map@^0.6.1":
+"source-map@^0.6.1", "source-map@0.6.1":
   "integrity" "sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g=="
   "resolved" "https://registry.npmmirror.com/source-map/-/source-map-0.6.1.tgz"
   "version" "0.6.1"
@@ -2257,6 +2295,16 @@
     "lodash" "^4.17.21"
     "semver" "^7.3.6"
 
+"vue-i18n@^9.3.0-beta.10":
+  "integrity" "sha512-w8ANcayAbF7ZxsSdnv0KwNViel1j6FqRJH3If+2gZgvERMOrKIz6oFQEQwEyiDl3W1DLITMvbgBQpwfUo7YU1Q=="
+  "resolved" "https://registry.npmmirror.com/vue-i18n/-/vue-i18n-9.3.0-beta.10.tgz"
+  "version" "9.3.0-beta.10"
+  dependencies:
+    "@intlify/core-base" "9.3.0-beta.10"
+    "@intlify/shared" "9.3.0-beta.10"
+    "@intlify/vue-devtools" "9.3.0-beta.10"
+    "@vue/devtools-api" "^6.2.1"
+
 "vue-router@^4.1.6":
   "integrity" "sha512-DYWYwsG6xNPmLq/FmZn8Ip+qrhFEzA14EI12MsMgVxvHFDYvlr4NXpVF5hrRH1wVcDP8fGi5F4rxuJSl8/r+EQ=="
   "resolved" "https://registry.npmmirror.com/vue-router/-/vue-router-4.1.6.tgz"
@@ -2280,7 +2328,7 @@
     "@volar/vue-language-core" "1.0.9"
     "@volar/vue-typescript" "1.0.9"
 
-"vue@^2.6.14 || ^3.2.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.2.0", "vue@^3.2.25", "vue@^3.2.45", "vue@2 || 3", "vue@3.2.45":
+"vue@^2.6.14 || ^3.2.0", "vue@^3.0.0", "vue@^3.0.0-0 || ^2.6.0", "vue@^3.2.0", "vue@^3.2.25", "vue@^3.2.45", "vue@2 || 3", "vue@3.2.45":
   "integrity" "sha512-9Nx/Mg2b2xWlXykmCwiTUCWHbWIj53bnkizBxKai1g61f2Xit700A1ljowpTIM11e3uipOeiPcSqnmBg6gyiaA=="
   "resolved" "https://registry.npmmirror.com/vue/-/vue-3.2.45.tgz"
   "version" "3.2.45"
