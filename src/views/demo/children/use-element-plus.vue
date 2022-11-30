@@ -4,7 +4,7 @@
     <div class="demo-content">
       <el-row class="mb-4">
         <el-button>Default</el-button>
-        <el-button type="primary">Primary</el-button>
+        <el-button type="primary">测试</el-button>
         <el-button type="success">Success</el-button>
         <el-button type="info">Info</el-button>
         <el-button type="warning">Warning</el-button>
@@ -12,18 +12,16 @@
       </el-row>
 
       <el-row class="mb-4">
-        <el-button plain>Plain</el-button>
-        <el-button type="primary" plain>Primary</el-button>
-        <el-button type="success" plain>Success</el-button>
-        <el-button type="info" plain>Info</el-button>
-        <el-button type="warning" plain>Warning</el-button>
-        <el-button type="danger" plain>Danger</el-button>
+        <el-date-picker v-model="value1" type="date" placeholder="Pick a day" />
       </el-row>
     </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue'
+const value1 = ref('')
+</script>
 
 <style lang="scss" scoped>
 .use-element-plus {
