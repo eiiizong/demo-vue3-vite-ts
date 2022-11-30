@@ -15,14 +15,14 @@
 <script setup lang="ts">
 import { reactive, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import config from '@/config'
+import { useStoreLanguage } from '@/stores/modules'
 
-const { locale, messages } = useI18n()
-const { systemLanguage } = config
+const { messages, locale } = useI18n()
+const storeLanguage = useStoreLanguage()
 
 const configProviderData = reactive({
   // 翻译文本对象
-  locale: messages.value[systemLanguage],
+  locale: messages.value[storeLanguage.language],
   // 全局组件大小  large / default /small
   size: 'default',
   // 全局初始化 zIndex 的值
@@ -44,9 +44,14 @@ const configProviderData = reactive({
 })
 
 // 监听语言改变
-watch(locale, (val) => {
-  configProviderData.locale = messages.value[val]
-})
+watch(
+  () => storeLanguage.language,
+  (val) => {
+    configProviderData.locale = messages.value[val]
+    locale.value = val
+  },
+  { immediate: true }
+)
 </script>
 
 <style lang="scss">

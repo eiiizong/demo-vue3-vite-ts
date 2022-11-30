@@ -3,8 +3,6 @@ import config from '@/config'
 
 import messages from './locales'
 
-console.log('messages===', messages)
-
 const i18n = createI18n({
   legacy: false,
   locale: config.systemLanguage || 'zh-cn',
@@ -12,5 +10,4 @@ const i18n = createI18n({
   fallbackWarn: false,
   messages
 })
-
 export default i18n
