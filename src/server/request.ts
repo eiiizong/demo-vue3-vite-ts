@@ -10,7 +10,7 @@ export class Request {
   static get = (url: string, params?: any) => {
     return new Promise((resolve, reject) => {
       axios
-        .get(url, { params: params })
+        .get(url, { params })
         .then((res) => {
           resolve(res)
         })
@@ -21,7 +21,7 @@ export class Request {
   }
 
   /**
-   * get方法
+   * post方法
    * @param {string} url 路径
    * @param {object} params 参数
    */

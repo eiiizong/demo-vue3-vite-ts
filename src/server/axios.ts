@@ -1,13 +1,6 @@
 // index.ts
 import axios from 'axios'
-import type {
-  Method,
-  AxiosInstance,
-  AxiosRequestConfig,
-  AxiosRequestHeaders,
-  AxiosResponse,
-  AxiosError
-} from 'axios'
+import type { Method, AxiosRequestConfig } from 'axios'
 import { ElMessage } from 'element-plus'
 import axiosErrorHandle from './axiosErrorHandle'
 
@@ -54,12 +47,12 @@ const axiosRemovePending = (config: AxiosRequestConfig) => {
 /**
  * 实例化请求配置
  */
-const axiosInstance = axios.create({
+const instance = axios.create({
   // 请求的base地址
-  // @ts-ignore：process未找到错误 => 需要该文件在vscode工作区的根目录下，才不会有错误提示。
   baseURL: VITE_API_REQUEST_URL,
   headers: {
-    'content-type': 'application/json;charset=UTF-8'
+    'Content-Type': 'application/json;charset=UTF-8',
+    'Access-Control-Allow-Origin-Type': '*'
   },
   data: {
     chm301: '07',
@@ -75,13 +68,12 @@ const axiosInstance = axios.create({
 /**
  * 请求拦截器 每次请求前，如果存在token则在请求头中携带token
  */
-axiosInstance.interceptors.request.use(
+instance.interceptors.request.use(
   (config) => {
     // 在发送请求之前做些什么
-    console.log('axiosInstance.interceptors.request.use', config)
+    console.log('instance.interceptors.request.use config', config)
     const { url, method, params, data } = config
     axiosRemovePending(config)
-
     config.cancelToken = new CancelToken((canceler) => {
       pending.push({
         url,
@@ -95,11 +87,12 @@ axiosInstance.interceptors.request.use(
     // 但是即使token存在，也有可能token是过期的，所以在每次的请求头中携带token
     // 后台根据携带的token判断用户的登录情况，并返回给我们对应的状态码
     // 而后我们可以在响应拦截器中，根据状态码进行一些统一的操作。
+
     return config
   },
   (error) => {
     // 对请求错误做些什么
-    console.log('axiosInstance.interceptors.request.use error', error)
+    console.log('instance.interceptors.request.use error', error)
     const { data } = error
     ElMessage.error(data.error.message)
     return Promise.reject(data.error.message)
@@ -107,10 +100,10 @@ axiosInstance.interceptors.request.use(
 )
 
 // 响应拦截器
-axiosInstance.interceptors.response.use(
+instance.interceptors.response.use(
   (response) => {
     // 对响应数据做点什么
-    console.log('axiosInstance.interceptors.response.use', response)
+    console.log('instance.interceptors.response.use response', response)
     const { config, status, data } = response
     axiosRemovePending(config)
     // 请求成功
@@ -149,7 +142,7 @@ axiosInstance.interceptors.response.use(
 
         // instance重试请求的Promise
         return backoff.then(() => {
-          return axiosInstance(config)
+          return instance(config)
         })
       }
 
@@ -164,4 +157,4 @@ axiosInstance.interceptors.response.use(
 )
 
 // 只需要考虑单一职责，这块只封装axios
-export default axiosInstance
+export default instance
