@@ -5,7 +5,7 @@ import { ElMessage } from 'element-plus'
 import axiosErrorHandle from './axiosErrorHandle'
 
 // @ts-ignore：process未找到错误 => 需要该文件在vscode工作区的根目录下，才不会有错误提示。
-const { VITE_API_REQUEST_URL } = process.env
+const { VITE_API_REQUEST_URL, VITE_OPEN_DATA_ENCRYPTION } = process.env
 
 // 定义接口
 interface PendingType {
@@ -69,6 +69,11 @@ instance.interceptors.request.use(
     // 在发送请求之前做些什么
     // console.log('instance.interceptors.request.use config', config)
     const { url, method, params, data } = config
+
+    // 开启加密
+    if (VITE_OPEN_DATA_ENCRYPTION === 'true') {
+      console.log(typeof VITE_OPEN_DATA_ENCRYPTION, VITE_OPEN_DATA_ENCRYPTION)
+    }
     axiosRemovePending(config)
     config.cancelToken = new CancelToken((canceler) => {
       pending.push({
@@ -104,6 +109,10 @@ instance.interceptors.response.use(
     axiosRemovePending(config)
     // 请求成功
     if (status === 200) {
+      // 开启加密
+      if (VITE_OPEN_DATA_ENCRYPTION === 'true') {
+        console.log(typeof VITE_OPEN_DATA_ENCRYPTION, VITE_OPEN_DATA_ENCRYPTION)
+      }
       return Promise.resolve(response)
     } else {
       return Promise.reject(response)
