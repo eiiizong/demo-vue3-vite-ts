@@ -2,7 +2,9 @@
 
 // 全局控制变量 包括 mixins
 
-@import "./variables/index";
+// @import "./variables/index";
 
-@import "./components/index.scss";
-@import "./project/index.scss";
+// @import "./components/index.scss";
+// @import "./project/index.scss";
+
+@use 'element-plus/theme-chalk/src/dark/css-vars.scss' as *;

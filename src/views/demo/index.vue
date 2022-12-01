@@ -56,7 +56,7 @@ const data = ref([
       li {
         margin-bottom: 10px;
         a {
-          color: $primary;
+          color: #f00;
           transition: all 0.3s;
           &:hover {
             text-decoration: underline;

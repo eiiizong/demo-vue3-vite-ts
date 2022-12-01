@@ -28,7 +28,7 @@ const configProviderData = reactive({
   // 全局初始化 zIndex 的值
   zIndex: 2000,
   // 全局组件类名称前缀 (需要配合 $namespace 使用)
-  namespace: 'el',
+  namespace: 'yh',
   // 按钮相关的配置
   button: {
     // 自动在两个中文字符之间插入空格
@@ -56,8 +56,8 @@ watch(
 
 <style lang="scss">
 // 全局公用样式
-@import '@/assets/styles/scss/index.scss';
+// @import '@/assets/styles/scss/index.scss';
 // @import '@/assets/styles/scss/element/index.scss';
 // 字体文件引入
-@import '@/assets/iconfont/index.scss';
+// @import '@/assets/iconfont/index.scss';
 </style>
