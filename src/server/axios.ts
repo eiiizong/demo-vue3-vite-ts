@@ -10,7 +10,7 @@ const { VITE_API_REQUEST_URL } = process.env
 // 定义接口
 interface PendingType {
   url?: string
-  method?: Method
+  method?: Method | string
   params: any
   data: any
   cancel: any
@@ -54,13 +54,18 @@ const instance = axios.create({
     'Content-Type': 'application/json;charset=UTF-8',
     'Access-Control-Allow-Origin-Type': '*'
   },
-  data: {
+  // 将与请求一起发送的 URL 参数 必须是一个无格式对象(plain object)或 URLSearchParams 对象
+
+  params: {
     chm301: '07',
     chw017: '05',
     chb004: '03'
   },
+
   // 请求超时时长
   timeout: 1000 * 60,
+  // 表示服务器响应的数据类型，可以是 'arraybuffer', 'blob', 'document', 'json', 'text', 'stream'
+  responseType: 'json',
   // 表示跨域请求时是否需要使用凭证
   withCredentials: false
 })
@@ -77,7 +82,7 @@ instance.interceptors.request.use(
     config.cancelToken = new CancelToken((canceler) => {
       pending.push({
         url,
-        method: method as Method,
+        method: method,
         params,
         data,
         cancel: canceler
