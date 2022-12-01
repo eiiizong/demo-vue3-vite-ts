@@ -1,5 +1,8 @@
-import { Request } from '@/server/request'
+import request from '@/server/request'
 import type { RequestSPGetHi05List } from '@/server/types'
+
+type SuccessResult = RequestSPGetHi05List.SPGetHi05ListSuccessResult
+type ErrorResult = RequestSPGetHi05List.SPGetHi05ListErrorResult
 
 /**
  * api 获取审批系统政策文件列表
@@ -12,16 +15,15 @@ import type { RequestSPGetHi05List } from '@/server/types'
  * @param {boolean} isShowErrorToast 是否显示错误提示 默认值 true
  * @returns
  */
-
 const requestSPGetHi05List = (
   chi051 = '',
   chi037 = '',
   chi031 = '',
   pageNo = 1,
-  pageSize = 10,
-  isShowLoading = true,
-  isShowErrorToast = true
-): Promise<RequestSPGetHi05List.SPGetHi05ListSuccessResult> => {
+  pageSize = 10
+  // isShowLoading = true,
+  // isShowErrorToast = true
+): Promise<SuccessResult> => {
   const data = {
     methodNamedesc: '获取审批系统政策文件列表',
     methodName: 'getHi05List',
@@ -34,17 +36,12 @@ const requestSPGetHi05List = (
   }
 
   return new Promise((resolve, reject) => {
-    Request.post(
-      '/frontRestService/frontBcpDataRestService/getWebServiceDataTwo',
-      data,
-      isShowLoading,
-      isShowErrorToast
-    )
+    request('/frontRestService/frontBcpDataRestService/getWebServiceDataTwo', data)
       .then((res) => {
-        resolve(res as RequestSPGetHi05List.SPGetHi05ListSuccessResult)
+        resolve(res as SuccessResult)
       })
       .catch((err) => {
-        reject(err as RequestSPGetHi05List.SPGetHi05ListErrorResult)
+        reject(err as ErrorResult)
       })
   })
 }

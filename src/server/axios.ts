@@ -100,11 +100,11 @@ instance.interceptors.response.use(
   (response) => {
     // 对响应数据做点什么
     // console.log('instance.interceptors.response.use response', response)
-    const { config, status, data } = response
+    const { config, status } = response
     axiosRemovePending(config)
     // 请求成功
     if (status === 200) {
-      return Promise.resolve(data)
+      return Promise.resolve(response)
     } else {
       return Promise.reject(response)
     }
@@ -115,7 +115,7 @@ instance.interceptors.response.use(
 
     const { response, config, message } = error
     if (response) {
-      const { status, data } = response
+      const { status } = response
       axiosErrorHandle(status, message)
 
       // 超时重新请求
@@ -127,7 +127,7 @@ instance.interceptors.response.use(
         config.__retryCount = config.__retryCount || 0
         // 检查是否已经把重试的总数用完
         if (config.__retryCount >= RETRY_COUNT) {
-          return Promise.reject(data)
+          return Promise.reject(response)
         }
         // 增加重试计数
         config.__retryCount++
@@ -144,7 +144,7 @@ instance.interceptors.response.use(
         })
       }
 
-      return Promise.reject(data)
+      return Promise.reject(response)
     } else {
       // console.log('instance.interceptors.response.use error no response ', error)
       // 处理断网的情况
