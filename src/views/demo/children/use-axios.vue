@@ -13,6 +13,9 @@ import { requestSPGetHi05List } from '@/server/api'
 
 onMounted(() => {
   requestSPGetHi05List().then((res) => {
+    console.log(res, 987678)
+  })
+  requestSPGetHi05List().then((res) => {
     console.log(res, 987)
   })
 })
