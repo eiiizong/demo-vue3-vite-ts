@@ -23,7 +23,6 @@ const CancelToken = axios.CancelToken
 // 移除重复请求
 const axiosRemovePending = (config: AxiosRequestConfig) => {
   for (const key in pending) {
-    console.log('axiosRemovePending', key)
     const index: number = +key
     const item: PendingType = pending[key]
 
@@ -54,14 +53,6 @@ const instance = axios.create({
     'Content-Type': 'application/json;charset=UTF-8',
     'Access-Control-Allow-Origin-Type': '*'
   },
-  // 将与请求一起发送的 URL 参数 必须是一个无格式对象(plain object)或 URLSearchParams 对象
-
-  params: {
-    chm301: '07',
-    chw017: '05',
-    chb004: '03'
-  },
-
   // 请求超时时长
   timeout: 1000 * 60,
   // 表示服务器响应的数据类型，可以是 'arraybuffer', 'blob', 'document', 'json', 'text', 'stream'
@@ -76,7 +67,7 @@ const instance = axios.create({
 instance.interceptors.request.use(
   (config) => {
     // 在发送请求之前做些什么
-    console.log('instance.interceptors.request.use config', config)
+    // console.log('instance.interceptors.request.use config', config)
     const { url, method, params, data } = config
     axiosRemovePending(config)
     config.cancelToken = new CancelToken((canceler) => {
@@ -97,7 +88,7 @@ instance.interceptors.request.use(
   },
   (error) => {
     // 对请求错误做些什么
-    console.log('instance.interceptors.request.use error', error)
+    // console.log('instance.interceptors.request.use error', error)
     const { data } = error
     ElMessage.error(data.error.message)
     return Promise.reject(data.error.message)
@@ -108,7 +99,7 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   (response) => {
     // 对响应数据做点什么
-    console.log('instance.interceptors.response.use response', response)
+    // console.log('instance.interceptors.response.use response', response)
     const { config, status, data } = response
     axiosRemovePending(config)
     // 请求成功
@@ -120,10 +111,12 @@ instance.interceptors.response.use(
   },
   (error) => {
     // 对响应错误做点什么
+    // console.log('instance.interceptors.response.use error', error)
+
     const { response, config, message } = error
     if (response) {
       const { status, data } = response
-      axiosErrorHandle(status, data.message)
+      axiosErrorHandle(status, message)
 
       // 超时重新请求
       // 设置全局的请求次数,请求的间隙
@@ -134,7 +127,7 @@ instance.interceptors.response.use(
         config.__retryCount = config.__retryCount || 0
         // 检查是否已经把重试的总数用完
         if (config.__retryCount >= RETRY_COUNT) {
-          return Promise.reject(response || { message })
+          return Promise.reject(data)
         }
         // 增加重试计数
         config.__retryCount++
@@ -151,8 +144,9 @@ instance.interceptors.response.use(
         })
       }
 
-      return Promise.reject(response)
+      return Promise.reject(data)
     } else {
+      // console.log('instance.interceptors.response.use error no response ', error)
       // 处理断网的情况
       // eg:请求超时或断网时，更新state的network状态
       // network状态在app.vue中控制着一个全局的断网提示组件的显示隐藏

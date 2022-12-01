@@ -1,5 +1,5 @@
 import { Request } from '@/server/request'
-// import type { RequestSPGetHi05List } from '@/server/types'
+import type { RequestSPGetHi05List } from '@/server/types'
 
 /**
  * api 获取审批系统政策文件列表
@@ -21,7 +21,7 @@ const requestSPGetHi05List = (
   pageSize = 10,
   isShowLoading = true,
   isShowErrorToast = true
-) => {
+): Promise<RequestSPGetHi05List.SPGetHi05ListSuccessResult> => {
   const data = {
     methodNamedesc: '获取审批系统政策文件列表',
     methodName: 'getHi05List',
@@ -41,10 +41,10 @@ const requestSPGetHi05List = (
       isShowErrorToast
     )
       .then((res) => {
-        resolve(res)
+        resolve(res as RequestSPGetHi05List.SPGetHi05ListSuccessResult)
       })
       .catch((err) => {
-        reject(err)
+        reject(err as RequestSPGetHi05List.SPGetHi05ListErrorResult)
       })
   })
 }

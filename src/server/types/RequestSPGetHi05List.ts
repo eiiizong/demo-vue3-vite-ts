@@ -1,44 +1,45 @@
-interface AnyObject {
-  [key: string]: any
-}
-// 定义接口请求类型
+// 定义接口请求返回的数据类型
 namespace RequestSPGetHi05List {
-  // 请求参数
-  export interface RequestOptions {
-    chi051?: string
-    chi037?: string
-    chi031?: string
-    pageNo?: number
-    pageSize?: number
-    isShowLoading?: boolean
-    isShowErrorToast?: boolean
+  export interface Hi05ListItem {
+    aab301: string
+    aab301desc: string
+    aae011: string
+    aae017: string
+    aae036: string
+    aae100: string
+    chi05a: string
+    chi031: string
+    chi032: string
+    chi037: string
+    chi037desc: string
+    chi050: string
+    chi051: string
+    chi052: string
+    chi053: string
+    chi054: string
+    chi056: string
+    chi058: string
+    chi059: string
+    myrownum: string
+    yab003: string
+    yab003desc: string
   }
 
   // 接口调用成功
-  export interface RequestSuccessCallbackResult {
-    /**
-     * 开发者服务器返回的数据
-     */
-    data: string | AnyObject | ArrayBuffer
-    /**
-     * 开发者服务器返回的 HTTP 状态码
-     */
-    statusCode: number
-    /**
-     * 开发者服务器返回的 HTTP Response Header
-     */
-    header: any
-    /**
-     * 开发者服务器返回的 cookies，格式为字符串数组
-     */
-    cookies: string[]
+  export interface SPGetHi05ListSuccessResult {
+    code: '200'
+    hi05ListPageInfo: string
+    lists: {
+      hi05List: {
+        list: [Hi05ListItem]
+        total: string
+      }
+    }
   }
-  // 接口调用失败
-  export interface GeneralCallbackResult {
-    /**
-     * 错误信息
-     */
-    errMsg: string
+
+  // 接口调用成功
+  export interface SPGetHi05ListErrorResult {
+    code: '200'
   }
 }
 

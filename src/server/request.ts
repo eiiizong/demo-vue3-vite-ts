@@ -26,9 +26,15 @@ export class Request {
    * @param {object} params 参数
    */
   static post = (url: string, params?: any, isShowLoading = true, isShowErrorToast = true) => {
+    params = {
+      ...params,
+      chm301: '07',
+      chw017: '05',
+      chb004: '03'
+    }
     return new Promise((resolve, reject) => {
       axios
-        .post(url, qs.stringify(params))
+        .post(url, params)
         .then((res) => {
           resolve(res)
         })
