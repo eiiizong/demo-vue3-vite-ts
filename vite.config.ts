@@ -15,19 +15,16 @@ export default defineConfig(({ mode }) => {
     plugins: [
       vue(),
       AutoImport({
-        resolvers: [ElementPlusResolver({ importStyle: 'sass' })]
+        resolvers: [ElementPlusResolver()],
+        dts: './src/auto-imports.d.ts'
       }),
       Components({
-        // allow auto load markdown components under `./src/components/`
-        extensions: ['vue', 'md'],
-        // allow auto import and register components used in markdown
-        include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
         resolvers: [
           ElementPlusResolver({
             importStyle: 'sass'
           })
         ],
-        dts: './components.d.ts'
+        dts: './src/components.d.ts'
       })
     ],
     resolve: {

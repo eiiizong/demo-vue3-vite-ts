@@ -43,6 +43,8 @@ const configProviderData = reactive({
   experimentalFeatures: {}
 })
 
+// ElMessage('测试')
+
 // 监听语言改变
 watch(
   () => storeLanguage.language,

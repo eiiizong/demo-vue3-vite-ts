@@ -11,7 +11,7 @@ import i18n from '@/languages'
 // 引入样式
 import 'normalize.css/normalize.css'
 import '@/assets/styles/scss/index.scss'
-// If you want to use ElMessage, import it.
+// 引入样式 ElMessage
 import 'element-plus/theme-chalk/src/message.scss'
 
 const app = createApp(App)
