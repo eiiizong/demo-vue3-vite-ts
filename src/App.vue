@@ -17,6 +17,7 @@ import { reactive, watch, watchEffect } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStoreLanguage } from '@/stores/modules'
 import { useSetTheme } from '@/hooks/project'
+import { getEnvData } from '@/utils/get'
 
 const { messages, locale } = useI18n()
 const storeLanguage = useStoreLanguage()
@@ -29,7 +30,7 @@ const configProviderData = reactive({
   // 全局初始化 zIndex 的值
   zIndex: 2000,
   // 全局组件类名称前缀 (需要配合 $namespace 使用)
-  namespace: 'yh',
+  namespace: getEnvData('VITE_ELEMENTPLUS_NAMESPACE'),
   // 按钮相关的配置
   button: {
     // 自动在两个中文字符之间插入空格

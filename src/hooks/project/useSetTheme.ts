@@ -1,5 +1,6 @@
 import { toRefs } from 'vue'
 import { useStoreTheme } from '@/stores/modules'
+import { getEnvData } from '@/utils/get'
 import { setThemeColor } from '@/utils/set'
 
 /**
@@ -23,7 +24,7 @@ const useSetTheme = () => {
   }
 
   // 是否存在主题色
-  setThemeColor(color ? color : '', name === 'dark', 'yh')
+  setThemeColor(color ? color : '', name === 'dark', getEnvData('VITE_ELEMENTPLUS_NAMESPACE'))
 }
 
 export { useSetTheme }

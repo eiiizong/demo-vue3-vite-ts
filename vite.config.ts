@@ -8,6 +8,8 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd())
+  console.log(env.VITE_ELEMENTPLUS_NAMESPACE)
+
   return {
     define: {
       'process.env': env
@@ -37,8 +39,10 @@ export default defineConfig(({ mode }) => {
       preprocessorOptions: {
         // 全局样式引入
         scss: {
-          // additionalData: '@import "@/assets/styles/scss/variables/index";',
-          additionalData: '@use "~/assets/styles/element/index.scss" as *;'
+          additionalData: `
+            $VITE_ELEMENTPLUS_NAMESPACE: ${env.VITE_ELEMENTPLUS_NAMESPACE};
+            @use "~/assets/styles/element/index.scss" as *;
+          `
         }
       },
       devSourcemap: true
