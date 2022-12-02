@@ -8,9 +8,10 @@ import pinia from '@/stores'
 // 引入国际化语言
 import i18n from '@/languages'
 
-// 引入样式
+// 引入样式 normalize.css
 import 'normalize.css/normalize.css'
-import '@/assets/styles/scss/index.scss'
+// 全局公用样式
+import '@/assets/styles/index.scss'
 // 引入样式 ElMessage
 import 'element-plus/theme-chalk/src/message.scss'
 

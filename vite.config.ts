@@ -38,7 +38,7 @@ export default defineConfig(({ mode }) => {
         // 全局样式引入
         scss: {
           // additionalData: '@import "@/assets/styles/scss/variables/index";',
-          additionalData: '@use "~/assets/styles/scss/element/index.scss" as *;'
+          additionalData: '@use "~/assets/styles/element/index.scss" as *;'
         }
       },
       devSourcemap: true

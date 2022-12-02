@@ -37,13 +37,11 @@ const configProviderData = reactive({
   // 消息相关配置
   message: {
     // 可同时显示的消息最大数量
-    max: 1
+    max: 3
   },
   // 添加的实验阶段的功能，所有功能都是默认设置为 false
   experimentalFeatures: {}
 })
-
-// ElMessage('测试')
 
 // 监听语言改变
 watch(
@@ -57,9 +55,6 @@ watch(
 </script>
 
 <style lang="scss">
-// 全局公用样式
-// @import '@/assets/styles/scss/index.scss';
-// @import '@/assets/styles/scss/element/index.scss';
 // 字体文件引入
-// @import '@/assets/iconfont/index.scss';
+@import '@/assets/iconfont/index.scss';
 </style>
