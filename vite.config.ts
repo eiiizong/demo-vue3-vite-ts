@@ -40,7 +40,6 @@ export default defineConfig(({ mode }) => {
         // 全局样式引入
         scss: {
           additionalData: `
-            $VITE_ELEMENTPLUS_NAMESPACE: ${env.VITE_ELEMENTPLUS_NAMESPACE};
             @use "~/assets/styles/element/index.scss" as *;
           `
         }
