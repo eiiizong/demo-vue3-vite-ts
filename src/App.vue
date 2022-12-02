@@ -13,9 +13,10 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, watch } from 'vue'
+import { reactive, watch, watchEffect } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useStoreLanguage } from '@/stores/modules'
+import { useSetTheme } from '@/hooks/project'
 
 const { messages, locale } = useI18n()
 const storeLanguage = useStoreLanguage()
@@ -43,6 +44,7 @@ const configProviderData = reactive({
   experimentalFeatures: {}
 })
 
+watchEffect(useSetTheme)
 // 监听语言改变
 watch(
   () => storeLanguage.language,

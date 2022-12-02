@@ -22,21 +22,24 @@
 </template>
 
 <script setup lang="ts">
+import type { Ref } from 'vue'
 import { ref } from 'vue'
-import { setThemeColor } from '@/utils/set'
-const color = ref('')
+import { useStoreTheme } from '@/stores/modules'
+
+const color: Ref<string | undefined> = ref('')
 const date = ref('')
+const storeTheme = useStoreTheme()
+
+color.value = storeTheme.getStoreTheme.color
 
 // 切换主题
 const handleSetTheme = (type: string | null) => {
-  const el = document.documentElement
   if (type === 'dark') {
-    el && el.classList.add('dark')
+    storeTheme.updateStoreTheme({ name: 'dark' })
   } else if (type === 'default') {
-    el && el.classList.remove('dark')
+    storeTheme.updateStoreTheme({ name: 'default' })
   } else {
-    if (type) setThemeColor(type, false, 'yh')
-    // console.log(type, 987)
+    storeTheme.updateStoreTheme({ color: type ? type : '' })
   }
 }
 </script>
