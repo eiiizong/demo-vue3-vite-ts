@@ -16,7 +16,6 @@ const ValideCode = [1, 0, 'X', 9, 8, 7, 6, 5, 4, 3, 2]
  */
 const isTrueValidateIdCard = (valueArr: string[]) => {
   let sum = 0 // 声明加权求和变量
-  let valCodePosition: number // 验证码所在位置
 
   if (valueArr[17].toLowerCase() === 'x') {
     valueArr[17] = '10' // 将最后位为x的验证码替换为10方便后续操作
@@ -25,7 +24,7 @@ const isTrueValidateIdCard = (valueArr: string[]) => {
   for (let i = 0; i < 17; i++) {
     sum += Wi[i] * Number(valueArr[i]) // 加权求和
   }
-  valCodePosition = sum % 11 // 得到验证码所位置
+  const valCodePosition = sum % 11 // 得到验证码所位置
 
   if (valueArr[17] != ValideCode[valCodePosition]) {
     return false
@@ -40,7 +39,7 @@ const isTrueValidateIdCard = (valueArr: string[]) => {
  * @param {String} errorMsgPrefix 错误信息提醒前缀
  * @returns {IdCardCheckResult}  isOk 校验是否成功  errMsg 校验失败时返回的错误信息
  */
-const useCheckIDCard = (value: string, errorMsgPrefix: string = '身份证号码'): IdCardCheckResult => {
+const checkIDCard = (value: string, errorMsgPrefix: string = '身份证号码'): IdCardCheckResult => {
   // 格式化身份证的值 去除空格 将 X 转化为 x
   value = (value + '').trim().toUpperCase()
   const len = value.length
@@ -48,7 +47,7 @@ const useCheckIDCard = (value: string, errorMsgPrefix: string = '身份证号码
   // 校验结果
   const checkResult = {
     isOk: false,
-    errMsg: errorMsgPrefix + '未知错误',
+    errMsg: errorMsgPrefix + '未知错误'
   }
 
   // 身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X。
@@ -61,8 +60,8 @@ const useCheckIDCard = (value: string, errorMsgPrefix: string = '身份证号码
   // 校验位按照ISO 7064:1983.MOD 11-2的规定生成，X可以认为是数字10。
   // 下面分别分析出生日期和校验位
   if (len === 15) {
-    let idCardRegExp15 = /^(\d{6})(\d{2})(\d{2})(\d{2})(\d{3})$/
-    let arrSplit = value.match(idCardRegExp15)
+    const idCardRegExp15 = /^(\d{6})(\d{2})(\d{2})(\d{2})(\d{3})$/
+    const arrSplit = value.match(idCardRegExp15)
     if (arrSplit) {
       const year = '19' + arrSplit[2]
       const month = arrSplit[3]
@@ -74,7 +73,10 @@ const useCheckIDCard = (value: string, errorMsgPrefix: string = '身份证号码
       const tempData_month = tempData.getMonth() + 1
       const tempData_day = tempData.getDate()
 
-      let isCorrect = tempData_year === Number(year) && tempData_month === Number(month) && tempData_day === Number(day)
+      const isCorrect =
+        tempData_year === Number(year) &&
+        tempData_month === Number(month) &&
+        tempData_day === Number(day)
 
       if (!isCorrect) {
         checkResult.isOk = false
@@ -83,7 +85,6 @@ const useCheckIDCard = (value: string, errorMsgPrefix: string = '身份证号码
       } else {
         // 将15位身份证转成18位
         // 校验位按照ISO 7064:1983.MOD 11-2的规定生成，X可以认为是数字10。
-        let ValideCode = new Array('1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2')
 
         value = value.substring(0, 6) + '19' + value.substring(6, value.length - 6)
 
@@ -105,8 +106,8 @@ const useCheckIDCard = (value: string, errorMsgPrefix: string = '身份证号码
     }
   }
   if (len === 18) {
-    let idCardRegExp18 = /^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/
-    let arrSplit = value.match(idCardRegExp18)
+    const idCardRegExp18 = /^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/
+    const arrSplit = value.match(idCardRegExp18)
     if (arrSplit) {
       // 检查生日日期是否正确
       const year = arrSplit[2]
@@ -119,7 +120,10 @@ const useCheckIDCard = (value: string, errorMsgPrefix: string = '身份证号码
       const tempData_month = tempData.getMonth() + 1
       const tempData_day = tempData.getDate()
 
-      let isCorrect = tempData_year === Number(year) && tempData_month === Number(month) && tempData_day === Number(day)
+      const isCorrect =
+        tempData_year === Number(year) &&
+        tempData_month === Number(month) &&
+        tempData_day === Number(day)
 
       if (!isCorrect) {
         checkResult.isOk = false
@@ -143,4 +147,4 @@ const useCheckIDCard = (value: string, errorMsgPrefix: string = '身份证号码
   return checkResult
 }
 
-export { useCheckIDCard }
+export { checkIDCard }

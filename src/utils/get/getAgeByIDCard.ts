@@ -1,12 +1,12 @@
-import { useGetIsDev } from './useGetIsDev'
+import { getIsDev } from './getIsDev'
 
-const isDev = useGetIsDev()
+const isDev = getIsDev()
 
 /**
  * 根据身份证号（使用该方法前先校验身份证号格式是否正确）获取年龄
  * @param {String} value 身份证号码
  */
-const useGetAgeByIDCard = (value: string): string => {
+const getAgeByIDCard = (value: string): string => {
   // 格式化身份证的值 去除空格 将 X 转化为 x
   value = (value + '').trim().toUpperCase()
 
@@ -22,16 +22,18 @@ const useGetAgeByIDCard = (value: string): string => {
       let birthday = ''
       // 处理15位的身份证号码从号码中得到生日和性别代码
       if (len === 15) {
-        birthday = '19' + value.substring(6, 2) + '/' + value.substring(8, 2) + '/' + value.substring(10, 2)
+        birthday =
+          '19' + value.substring(6, 2) + '/' + value.substring(8, 2) + '/' + value.substring(10, 2)
       }
       // 处理18位的身份证号码从号码中得到生日和性别代码
       if (len === 18) {
-        birthday = value.substring(6, 4) + '/' + value.substring(10, 2) + '/' + value.substring(12, 2)
+        birthday =
+          value.substring(6, 4) + '/' + value.substring(10, 2) + '/' + value.substring(12, 2)
       }
 
       // 时间字符串里，必须是“/”
-      let birthDate = new Date(birthday)
-      let nowDate = new Date()
+      const birthDate = new Date(birthday)
+      const nowDate = new Date()
 
       let _age = nowDate.getFullYear() - birthDate.getFullYear()
 
@@ -54,4 +56,4 @@ const useGetAgeByIDCard = (value: string): string => {
   return age
 }
 
-export { useGetAgeByIDCard }
+export { getAgeByIDCard }

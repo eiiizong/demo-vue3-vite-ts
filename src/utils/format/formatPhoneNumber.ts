@@ -2,7 +2,7 @@
  * 格式化电话号码 13288876677 => 132****6677
  * @param {string} value 姓名
  */
-const useFormatPhoneNumber = (value: string): string => {
+const formatPhoneNumber = (value: string): string => {
   let result = ''
   value = value.trim()
   if (value) {
@@ -12,4 +12,4 @@ const useFormatPhoneNumber = (value: string): string => {
   return result
 }
 
-export { useFormatPhoneNumber }
+export { formatPhoneNumber }

@@ -3,15 +3,12 @@
  * @param {String} fileds 日期粒度 day（默认）、 month、 year
  * @param {String} delimiter 分隔符 默认 -
  */
-const useGetCurrentDate = (
-  fileds: string = 'day',
-  delimiter: string = '-'
-): string => {
+const getCurrentDate = (fileds: string = 'day', delimiter: string = '-'): string => {
   const nowDate = new Date()
 
-  let strArr:string[] = []
+  let strArr: string[] = []
 
-  let year: string = nowDate.getFullYear()+''
+  const year: string = nowDate.getFullYear() + ''
   let month: string = nowDate.getMonth() + 1 + ''
   let day: string = nowDate.getDate() + ''
 
@@ -40,4 +37,4 @@ const useGetCurrentDate = (
   return strArr.join(delimiter)
 }
 
-export { useGetCurrentDate }
+export { getCurrentDate }

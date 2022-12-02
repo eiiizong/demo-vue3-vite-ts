@@ -1,18 +1,18 @@
-import { useGetIsDev } from './useGetIsDev'
+import { getIsDev } from './getIsDev'
 
-const isDev = useGetIsDev()
+const isDev = getIsDev()
 
 enum Gender {
   male = '男',
   female = '女',
-  other = '其他',
+  other = '其他'
 }
 
 /**
  * 根据身份证号（使用该方法前先校验身份证号格式是否正确）获取性别
  * @param {String} value 身份证号
  */
-const useGetGenderByIDCard = (value: string): string => {
+const getGenderByIDCard = (value: string): string => {
   // 格式化身份证的值 去除空格 将 X 转化为 x
   value = (value + '').trim().toUpperCase()
 
@@ -41,4 +41,4 @@ const useGetGenderByIDCard = (value: string): string => {
   return result
 }
 
-export { useGetGenderByIDCard }
+export { getGenderByIDCard }

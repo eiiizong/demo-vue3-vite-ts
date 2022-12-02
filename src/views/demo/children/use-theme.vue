@@ -15,7 +15,7 @@
       <el-button type="primary" @click="handleSetTheme('default')">Default</el-button>
       <div class="demo-color-block">
         <span class="demonstration">选择主题色</span>
-        <el-color-picker v-model="color" />
+        <el-color-picker v-model="color" @change="handleSetTheme($event)" />
       </div>
     </div>
   </div>
@@ -23,16 +23,20 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { setThemeColor } from '@/utils/set'
 const color = ref('')
 const date = ref('')
 
 // 切换主题
-const handleSetTheme = (type: string) => {
+const handleSetTheme = (type: string | null) => {
   const el = document.documentElement
   if (type === 'dark') {
     el && el.classList.add('dark')
-  } else {
+  } else if (type === 'default') {
     el && el.classList.remove('dark')
+  } else {
+    if (type) setThemeColor(type, false, 'yh')
+    // console.log(type, 987)
   }
 }
 </script>

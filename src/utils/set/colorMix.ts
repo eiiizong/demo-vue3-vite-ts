@@ -5,7 +5,7 @@
  * @param ratio 比例
  * @returns
  */
-const useColourBlend = (c1: string, c2: string, ratio: number) => {
+const colorMix = (c1: string, c2: string, ratio: number) => {
   ratio = Math.max(Math.min(Number(ratio), 1), 0)
   const r1 = parseInt(c1.substring(1, 3), 16)
   const g1 = parseInt(c1.substring(3, 5), 16)
@@ -22,4 +22,4 @@ const useColourBlend = (c1: string, c2: string, ratio: number) => {
   return '#' + _r + _g + _b
 }
 
-export { useColourBlend }
+export { colorMix }

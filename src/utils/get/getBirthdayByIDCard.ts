@@ -1,12 +1,12 @@
-import { useGetIsDev } from './useGetIsDev'
+import { getIsDev } from './getIsDev'
 
-const isDev = useGetIsDev()
+const isDev = getIsDev()
 
 /**
  * 根据身份证号（使用该方法前先校验身份证号格式是否正确）获取出生日期
  * @param {String} value 身份证号
  */
-const useGetBirthdayByIDCard = (value: string): string => {
+const getBirthdayByIDCard = (value: string): string => {
   // 格式化身份证的值 去除空格 将 X 转化为 x
   value = (value + '').trim().toUpperCase()
 
@@ -34,4 +34,4 @@ const useGetBirthdayByIDCard = (value: string): string => {
   return birthday
 }
 
-export { useGetBirthdayByIDCard }
+export { getBirthdayByIDCard }

@@ -2,7 +2,7 @@
  * 格式化姓名 张三 => *三 张三三 => 张*三
  * @param {string} value 姓名
  */
-const useFormatUserName = (value: string): string => {
+const formatUserName = (value: string): string => {
   let result = ''
   value = value.trim()
   if (value) {
@@ -20,4 +20,4 @@ const useFormatUserName = (value: string): string => {
   return result
 }
 
-export { useFormatUserName }
+export { formatUserName }

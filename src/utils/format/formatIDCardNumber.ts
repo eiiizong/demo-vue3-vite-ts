@@ -1,8 +1,8 @@
 /**
- * @param {String} value 银行卡号
- * 格式化银行卡号 66634343535353535355 => 6*****************5
+ * 格式化身份证号码 510902199507237788 => 5****************8
+ * @param {string} value 身份证号码
  */
-const useFormatBankCardNumber = (value: string): string => {
+const formatIDCardNumber = (value: string): string => {
   let result = ''
   value = value.trim()
   if (value) {
@@ -12,4 +12,4 @@ const useFormatBankCardNumber = (value: string): string => {
   return result
 }
 
-export { useFormatBankCardNumber }
+export { formatIDCardNumber }
