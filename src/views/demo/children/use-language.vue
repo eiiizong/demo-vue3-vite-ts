@@ -1,14 +1,22 @@
 <template>
   <div class="use-element-plus">
-    <div class="demo-tip">language</div>
+    <div class="demo-title">语言切换与使用</div>
 
     <div class="demo-content">
-      <el-row class="mb-4">
+      <div class="demo-content-row">
+        使用：
+        <br />
+        {{ useI18nT(text) }}
+      </div>
+      <div class="demo-content-row">
+        组件切换示例：
+        <br />
         <el-date-picker v-model="value1" type="date" placeholder="Pick a day" />
-      </el-row>
-      <div>文本内容： {{ useI18nT(text) }}</div>
-      <el-button type="primary" @click="handleChangeLanguage('zh-cn')">中文</el-button>
-      <el-button type="success" @click="handleChangeLanguage('en')">英文</el-button>
+      </div>
+    </div>
+    <div class="demo-toolbar">
+      <el-button @click="handleChangeLanguage('zh-cn')">中文</el-button>
+      <el-button type="primary" @click="handleChangeLanguage('en')">英文</el-button>
     </div>
   </div>
 </template>

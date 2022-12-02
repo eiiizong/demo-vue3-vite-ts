@@ -1,12 +1,12 @@
 <template>
   <div class="use-pinia">
-    <div class="demo-tip">直接使用，无须引入</div>
-    <div class="demo-content">
-      用户名：{{ userInfo.userName }}
-      <el-button type="primary" @click="storeUserInfo.updateStoreUserInfo({ userName: '测试' })">
-        set userInfo
+    <div class="demo-title">Pinia 使用示例</div>
+    <div class="demo-content">用户名：{{ userInfo.userName }}</div>
+    <div class="demo-toolbar">
+      <el-button @click="storeUserInfo.updateStoreUserInfo({ userName: '测试' })">
+        设置用户名
       </el-button>
-      <el-button type="primary" @click="storeUserInfo.$reset()"> clear userInfo </el-button>
+      <el-button type="primary" @click="storeUserInfo.$reset()"> 清除用户名</el-button>
     </div>
   </div>
 </template>

@@ -49,14 +49,24 @@ const data = ref([
 .demo {
   width: 100%;
   display: flex;
+  align-items: flex-start;
   padding: 20px;
 
+  .left {
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+  }
   .right {
+    background-color: #fff;
+    padding: 20px;
+    height: 100%;
+    margin-left: 20px;
     ul {
       li {
         margin-bottom: 10px;
         a {
-          color: #f00;
+          color: var(--yh-color-primary);
           transition: all 0.3s;
           &:hover {
             text-decoration: underline;
@@ -64,11 +74,6 @@ const data = ref([
         }
       }
     }
-  }
-  .left {
-    flex: 1;
-    overflow: hidden;
-    padding: 20px;
   }
 }
 </style>
