@@ -11,8 +11,8 @@
       </div>
     </div>
     <div class="demo-toolbar">
-      <el-button>Dark</el-button>
-      <el-button type="primary">Default</el-button>
+      <el-button @click="handleSetTheme('dark')">Dark</el-button>
+      <el-button type="primary" @click="handleSetTheme('default')">Default</el-button>
       <div class="demo-color-block">
         <span class="demonstration">选择主题色</span>
         <el-color-picker v-model="color" />
@@ -25,6 +25,16 @@
 import { ref } from 'vue'
 const color = ref('')
 const date = ref('')
+
+// 切换主题
+const handleSetTheme = (type: string) => {
+  const el = document.documentElement
+  if (type === 'dark') {
+    el && el.classList.add('dark')
+  } else {
+    el && el.classList.remove('dark')
+  }
+}
 </script>
 
 <style lang="scss" scoped>
