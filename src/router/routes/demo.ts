@@ -18,6 +18,14 @@ const routeDemo = {
       }
     },
     {
+      path: 'use-echart-pie',
+      component: () => import('@/views/demo/children/use-echart-pie.vue'),
+      meta: {
+        title: '示例 echart-pie',
+        requireAuth: false
+      }
+    },
+    {
       path: 'use-element-plus',
       component: () => import('@/views/demo/children/use-element-plus.vue'),
       meta: {

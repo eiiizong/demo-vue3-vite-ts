@@ -23,6 +23,11 @@ const data = ref([
     name: '使用 axios'
   },
   {
+    id: '012',
+    path: 'use-echart-pie',
+    name: '使用 echart-pie'
+  },
+  {
     id: '02',
     path: 'use-element-plus',
     name: '使用 Element Plus 组件'
