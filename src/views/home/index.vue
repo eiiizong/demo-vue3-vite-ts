@@ -27,7 +27,6 @@ import HomeContent from './components/HomeContent.vue'
   display: flex;
   color: #fff;
   .left {
-    width: 200px;
     display: flex;
     flex-direction: column;
   }
